@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/getRequest', function() {
+    if(Request::ajax())
+    {
+        return 'getRequest has loaded completely! ';
+    }
+});
+
+Route::post('/register', function() {
+    if(Request::ajax())
+    {
+        return Response::json(Request::all());
+    }
+});
